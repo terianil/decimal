@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Decimal</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <div id="content">
+      <h1>
+        Decimal
+        
+      </h1>
+
+      
+        <div id="moduledoc" class="docstring">
+          <p>Decimal arithmetic on arbitrary precision floating-point numbers.</p>
+
+<p>A number is represented by a signed coefficient and exponent such that: <code>sign
+* coefficient * 10^exponent</code>. All numbers are represented and calculated
+exactly, but the result of an operation may be rounded depending on the
+context the operation is performed with, see: <a href="Decimal.Context.html"><code>Decimal.Context</code></a>. Trailing
+zeros in the coefficient are never truncated to preserve the number of
+significant digits unless explicitly done so.</p>
+
+<p>There are also special values such as NaN and (+-)Infinity. -0 and +0 are two
+distinct values. Some operations results are not defined and will return NaN.
+This kind of NaN is quiet, any operation returning a number will return
+NaN when given a quiet NaN (the NaN value will flow through all operations).
+The other kind of NaN is signalling which is the value that can be reached
+in <code>Error.result/1</code> when the result is NaN. Any operation given a signalling
+return will signal <code>:invalid_operation</code>.</p>
+
+<p>Exceptional conditions are grouped into signals, each signal has a flag and a
+trap enabler in the context. Whenever a signal is triggered it&#39;s flag is set
+in the context and will be set until explicitly cleared. If the signal is trap
+enabled <a href="Decimal.Error.html"><code>Decimal.Error</code></a> will be raised.</p>
+
+<p>The specifications influencing the API:
+* <a href="http://speleotrove.com/decimal/decarith.html">IBM&#39;s General Decimal Arithmetic Specification</a>
+* <a href="http://754r.ucbtest.org/standards/854.pdf">IEEE standard 854-1987</a></p>
+
+<p>This implementation follows the above standards as closely as possible. But at
+some places the implementation diverges from the specification. The reasons
+are different for each case but may be that the specification doesn&#39;t map to
+this environment, ease of implementation or that API will be nicer. Still, the
+implementation is close enough that the specifications can be seen as
+additional documentation that can be used when things are unclear.</p>
+
+<p>The specification models the sign of the number as 1, for a negative number,
+and 0 for a positive number. Internally this implementation models the sign as
+1 or -1 such that the complete number will be: <code>sign * coefficient *
+10^exponent</code> and will refer to the sign in documentation as either <em>positive</em>
+or <em>negative</em>.</p>
+
+        </div>
+      
+
+      <a href="" target="_blank" class="view_source">Source</a>
+
+      
+
+      
+        <h2 id="functions_summary">Functions summary</h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#abs/1">abs(d)</a></td>
+  
+    <td class="summary_synopsis"><p>The absolute value of given number. Sets the number&#39;s sign to positive.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#add/2">add(d1, d2)</a></td>
+  
+    <td class="summary_synopsis"><p>Adds two numbers together.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#calc_frac/4">calc_frac(coef, exp, frac, fexp)</a></td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#compare/2">compare(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Compares two numbers numerically. If both first number is greater than second
+<code>#Decimal&lt;1&gt;</code> is returned, if less than <code>Decimal&lt;-1&gt;</code> is returned. Otherwise,
+if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#div/2">div(d1, d2)</a></td>
+  
+    <td class="summary_synopsis"><p>Divides two numbers.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#div_int/2">div_int(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Divides two numbers and returns the integer part.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#div_rem/2">div_rem(d1, d2)</a></td>
+  
+    <td class="summary_synopsis"><p>Integer division of two numbers and the remainder. Should be used when both
+<a href="#div_int/2"><code>div_int/2</code></a> and <a href="#rem/2"><code>rem/2</code></a> is needed. Equivalent to: <code>{ Decimal.div_int(x, y),
+Decimal.rem(x, y) }</code>.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_context/0">get_context()</a></td>
+  
+    <td class="summary_synopsis"><p>Gets the process&#39; context.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#max/2">max(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Compares two values numerically and returns the maximum. Unlike most other
+functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN the result will be the other number.
+Only if both numbers are NaN will NaN be returned.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#min/2">min(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Compares two values numerically and returns the minimum. Unlike most other
+functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN the result will be the other number.
+Only if both numbers are NaN will NaN be returned.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#minus/1">minus(d)</a></td>
+  
+    <td class="summary_synopsis"><p>Negates the given number.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#mult/2">mult(d1, d2)</a></td>
+  
+    <td class="summary_synopsis"><p>Multiplies two numbers.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#new/1">new(d)</a></td>
+  
+    <td class="summary_synopsis"><p>Creates a new decimal number from a string representation, an integer or a
+floating point number. Floating point numbers will be converted to decimal
+numbers with <a href="http://www.erlang.org/doc/man/io_lib_format.html#fwrite_g-1"><code>:io_lib_format.fwrite_g/1</code></a>.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#new/3">new(sign, coefficient, exponent)</a></td>
+  
+    <td class="summary_synopsis"><p>Creates a new decimal number from the sign, coefficient and exponent such that
+the number will be: <code>sign * coefficient * 10^exponent</code>.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#plus/1">plus(d)</a></td>
+  
+    <td class="summary_synopsis"><p>Applies the context to the given number rounding it to specified precision.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#reduce/1">reduce(d)</a></td>
+  
+    <td class="summary_synopsis"><p>Reduces the given number. Removes trailing zeros from coefficient while
+keeping the number numerically equivalent by increasing the exponent.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#rem/2">rem(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Remainder of integer division of two numbers. The result will have the sign of
+the first number.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#round/3">round(num, places // 0, mode // :half_up)</a></td>
+  
+    <td class="summary_synopsis"><p>Rounds the given number to specified decimal places with the given strategy
+(default is to round to nearest one). If places is negative, at least that
+many digits to the left of the decimal point will be zero.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#set_context/1">set_context(context)</a></td>
+  
+    <td class="summary_synopsis"><p>Set the process&#39; context.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#sub/2">sub(num1, d2)</a></td>
+  
+    <td class="summary_synopsis"><p>Subtracts second number from the first. Equivalent to <a href="Decimal.html#add/2"><code>Decimal.add/2</code></a> when the
+second number&#39;s sign is negated.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#to_string/2">to_string(num, type // :scientific)</a></td>
+  
+    <td class="summary_synopsis"><p>Converts given number to its string representation.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#update_context/1">update_context(fun)</a></td>
+  
+    <td class="summary_synopsis"><p>Update the process&#39; context.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#with_context/2">with_context(context, fun)</a></td>
+  
+    <td class="summary_synopsis"><p>Runs function with given context.</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+        <h2 id="macros_summary">Macros summary</h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#is_inf/1">is_inf(d)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code>.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#is_nan/1">is_nan(d)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code>.</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+        <div id="types_details" class="details_list">
+          <h2>Types</h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:t/0">
+    <a href="#t:t/0">t</a>
+  </p>
+  
+</div>
+<div class="type_detail">
+  <p class="typespec" id="t:signal/0">
+    <a href="#t:signal/0">signal</a> :: :invalid_operation | :division_by_zero | :rounded | :inexact
+  </p>
+  
+</div>
+<div class="type_detail">
+  <p class="typespec" id="t:rounding/0">
+    <a href="#t:rounding/0">rounding</a> :: :down | :half_up | :half_even | :ceiling | :floor | :half_down | :up
+  </p>
+  
+</div>
+
+        </div>
+      
+
+      
+        <div id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <div class="detail">
+  <p class="signature" id="abs/1">
+    <strong>abs(d)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>abs(<a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>The absolute value of given number. Sets the number&#39;s sign to positive.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="add/2">
+    <strong>add(d1, d2)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>add(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+        <li>add(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Adds two numbers together.</p>
+
+<h2>Exceptional conditions</h2>
+
+<ul>
+<li>If one number is -Infinity and the other +Infinity <code>:invalid_operation</code> will
+be signalled.</li>
+</ul>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="calc_frac/4">
+    <strong>calc_frac(coef, exp, frac, fexp)</strong>
+  </p>
+  
+  <div class="docstring"></div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="compare/2">
+    <strong>compare(num1, num2)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>compare(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Compares two numbers numerically. If both first number is greater than second
+<code>#Decimal&lt;1&gt;</code> is returned, if less than <code>Decimal&lt;-1&gt;</code> is returned. Otherwise,
+if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="div/2">
+    <strong>div(d1, d2)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>div(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+        <li>div(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Divides two numbers.</p>
+
+<h2>Exceptional conditions</h2>
+
+<ul>
+<li>If both numbers are (+-)Infinity <code>:invalid_operation</code> is signalled.</li>
+<li>If both numbers are (+-)0 <code>:invalid_operation</code> is signalled.</li>
+<li>If second number (denominator) is (+-)0 <code>:division_by_zero</code> is signalled.</li>
+</ul>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="div_int/2">
+    <strong>div_int(num1, num2)</strong>
+  </p>
+  
+  <div class="docstring"><p>Divides two numbers and returns the integer part.</p>
+
+<h2>Exceptional conditions</h2>
+
+<ul>
+<li>If both numbers are (+-)Infinity <code>:invalid_operation</code> is signalled.</li>
+<li>If both numbers are (+-)0 <code>:invalid_operation</code> is signalled.</li>
+<li>If second number (denominator) is (+-)0 <code>:division_by_zero</code> is signalled.</li>
+</ul>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="div_rem/2">
+    <strong>div_rem(d1, d2)</strong>
+  </p>
+  
+  <div class="docstring"><p>Integer division of two numbers and the remainder. Should be used when both
+<a href="#div_int/2"><code>div_int/2</code></a> and <a href="#rem/2"><code>rem/2</code></a> is needed. Equivalent to: <code>{ Decimal.div_int(x, y),
+Decimal.rem(x, y) }</code>.</p>
+
+<h2>Exceptional conditions</h2>
+
+<ul>
+<li>If both numbers are (+-)Infinity <code>:invalid_operation</code> is signalled.</li>
+<li>If both numbers are (+-)0 <code>:invalid_operation</code> is signalled.</li>
+<li>If second number (denominator) is (+-)0 <code>:division_by_zero</code> is signalled.</li>
+</ul>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_context/0">
+    <strong>get_context()</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>get_context :: <a href="Decimal.Context.html#t:t/0">Decimal.Context.t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Gets the process&#39; context.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="max/2">
+    <strong>max(num1, num2)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>max(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Compares two values numerically and returns the maximum. Unlike most other
+functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN the result will be the other number.
+Only if both numbers are NaN will NaN be returned.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="min/2">
+    <strong>min(num1, num2)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>min(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Compares two values numerically and returns the minimum. Unlike most other
+functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN the result will be the other number.
+Only if both numbers are NaN will NaN be returned.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="minus/1">
+    <strong>minus(d)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>minus(<a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Negates the given number.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="mult/2">
+    <strong>mult(d1, d2)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>mult(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Multiplies two numbers.</p>
+
+<h2>Exceptional conditions</h2>
+
+<ul>
+<li>If one number is (+-0) and the other is (+-)Infinity <code>:invalid_operation</code> is
+signalled.</li>
+</ul>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="new/1">
+    <strong>new(d)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>new(<a href="#t:t/0">t</a> | integer | float | <a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Creates a new decimal number from a string representation, an integer or a
+floating point number. Floating point numbers will be converted to decimal
+numbers with <a href="http://www.erlang.org/doc/man/io_lib_format.html#fwrite_g-1"><code>:io_lib_format.fwrite_g/1</code></a>.</p>
+
+<p>A decimal number will always be created exactly as specified with all digits
+kept - it will not be rounded with the context.</p>
+
+<h2>BNFC</h2>
+
+<pre><code>sign           ::=  ’+’ | ’-’
+digit          ::=  ’0’ | ’1’ | ’2’ | ’3’ | ’4’ | ’5’ | ’6’ | ’7’ | ’8’ | ’9’
+indicator      ::=  ’e’ | ’E’
+digits         ::=  digit [digit]...
+decimal-part   ::=  digits ’.’ [digits] | [’.’] digits
+exponent-part  ::=  indicator [sign] digits
+infinity       ::=  ’Infinity’ | ’Inf’
+nan            ::=  ’NaN’ [digits] | ’sNaN’ [digits]
+numeric-value  ::=  decimal-part [exponent-part] | infinity
+numeric-string ::=  [sign] numeric-value | [sign] nan
+</code></pre>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="new/3">
+    <strong>new(sign, coefficient, exponent)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>new(1 | {:op, 662, :-, {:integer, 662, 1}}, non_neg_integer | :qNaN | :sNaN | :inf, integer) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Creates a new decimal number from the sign, coefficient and exponent such that
+the number will be: <code>sign * coefficient * 10^exponent</code>.</p>
+
+<p>A decimal number will always be created exactly as specified with all digits
+kept - it will not be rounded with the context.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="plus/1">
+    <strong>plus(d)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>plus(<a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Applies the context to the given number rounding it to specified precision.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="reduce/1">
+    <strong>reduce(d)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>reduce(<a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Reduces the given number. Removes trailing zeros from coefficient while
+keeping the number numerically equivalent by increasing the exponent.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="rem/2">
+    <strong>rem(num1, num2)</strong>
+  </p>
+  
+  <div class="docstring"><p>Remainder of integer division of two numbers. The result will have the sign of
+the first number.</p>
+
+<h2>Exceptional conditions</h2>
+
+<ul>
+<li>If both numbers are (+-)Infinity <code>:invalid_operation</code> is signalled.</li>
+<li>If both numbers are (+-)0 <code>:invalid_operation</code> is signalled.</li>
+<li>If second number (denominator) is (+-)0 <code>:division_by_zero</code> is signalled.</li>
+</ul>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="round/3">
+    <strong>round(num, places // 0, mode // :half_up)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>round(<a href="#t:t/0">t</a>, integer, <a href="#t:rounding/0">rounding</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Rounds the given number to specified decimal places with the given strategy
+(default is to round to nearest one). If places is negative, at least that
+many digits to the left of the decimal point will be zero.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="set_context/1">
+    <strong>set_context(context)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>set_context(<a href="Decimal.Context.html#t:t/0">Decimal.Context.t</a>) :: <a href="Decimal.Context.html#t:t/0">Decimal.Context.t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Set the process&#39; context.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="sub/2">
+    <strong>sub(num1, d2)</strong>
+  </p>
+  
+  <div class="docstring"><p>Subtracts second number from the first. Equivalent to <a href="Decimal.html#add/2"><code>Decimal.add/2</code></a> when the
+second number&#39;s sign is negated.</p>
+
+<h2>Exceptional conditions</h2>
+
+<ul>
+<li>If one number is -Infinity and the other +Infinity <code>:invalid_operation</code> will
+be signalled.</li>
+</ul>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="to_string/2">
+    <strong>to_string(num, type // :scientific)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>to_string(<a href="#t:t/0">t</a>, :scientific | :normal | :raw) :: <a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Converts given number to its string representation.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="update_context/1">
+    <strong>update_context(fun)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>update_context((<a href="Decimal.Context.html#t:t/0">Decimal.Context.t</a> -> <a href="Decimal.Context.html#t:t/0">Decimal.Context.t</a>)) :: <a href="Decimal.Context.html#t:t/0">Decimal.Context.t</a></li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Update the process&#39; context.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="with_context/2">
+    <strong>with_context(context, fun)</strong>
+  </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>with_context(<a href="Decimal.Context.html#t:t/0">Decimal.Context.t</a>, (() -> x)) :: x when x: var</li>
+      
+    </ul>
+  
+  <div class="docstring"><p>Runs function with given context.</p>
+</div>
+  
+</div>
+
+        </div>
+      
+
+      
+        <div id="macros_details" class="details_list">
+          <h2>Macros</h2>
+          <div class="detail">
+  <p class="signature" id="is_inf/1">
+    <strong>is_inf(d)</strong>
+  </p>
+  
+  <div class="docstring"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code>.</p>
+
+<p>Allowed in guard tests.</p>
+</div>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="is_nan/1">
+    <strong>is_nan(d)</strong>
+  </p>
+  
+  <div class="docstring"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code>.</p>
+
+<p>Allowed in guard tests.</p>
+</div>
+  
+</div>
+
+        </div>
+      
+
+      
+    </div>
+  </body>
+</html>

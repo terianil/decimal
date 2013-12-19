@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Decimal.Error</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <div id="content">
+      <h1>
+        Decimal.Error
+        
+          <small>exception</small>
+        
+      </h1>
+
+      
+        <div id="moduledoc" class="docstring">
+          <p>The exception that all Decimal operations may raise.</p>
+
+<h2>Fields</h2>
+
+<ul>
+<li><code>signal</code> - The signalled error, additional signalled errors will be found
+in the context.</li>
+<li><code>reason</code> - The reason for the error.</li>
+<li><code>result</code> - The result of the operation signalling the error.</li>
+</ul>
+
+<p>Rescuing the error to access the result or the other fields of the error is
+discouraged and should only be done for exceptional conditions. It is more
+pragmatic to set the appropriate traps on the context and check the flags
+after the operation if the result needs to be inspected.</p>
+
+        </div>
+      
+
+      <a href="" target="_blank" class="view_source">Source</a>
+
+      
+        <h2>Fields <small>(and defaults)</small></h2>
+        <ul class="summary">
+          
+            <li>
+              <span class="summary_signature">
+                <strong>signal:</strong> nil
+              </span>
+            </li>
+          
+            <li>
+              <span class="summary_signature">
+                <strong>reason:</strong> nil
+              </span>
+            </li>
+          
+            <li>
+              <span class="summary_signature">
+                <strong>result:</strong> nil
+              </span>
+            </li>
+          
+        </ul>
+      
+
+      
+        <h2 id="functions_summary">Functions summary</h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#message/1">message(arg1)</a></td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+
+      
+        <div id="types_details" class="details_list">
+          <h2>Types</h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:t/0">
+    <a href="#t:t/0">t</a> :: {Decimal.Error, term, <a href="Decimal.html#t:signal/0">Decimal.signal</a>, <a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a>, <a href="Decimal.html#t:t/0">Decimal.t</a>}
+  </p>
+  
+</div>
+<div class="type_detail">
+  <p class="typespec" id="t:options/0">
+    <a href="#t:options/0">options</a> :: [__exception__: term, signal: <a href="Decimal.html#t:signal/0">Decimal.signal</a>, reason: <a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a>, result: <a href="Decimal.html#t:t/0">Decimal.t</a>] | [{<a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a>, term}]
+  </p>
+  
+</div>
+
+        </div>
+      
+
+      
+        <div id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <div class="detail">
+  <p class="signature" id="message/1">
+    <strong>message(arg1)</strong>
+  </p>
+  
+  <div class="docstring"></div>
+  
+</div>
+
+        </div>
+      
+
+      
+
+      
+    </div>
+  </body>
+</html>
