@@ -42,16 +42,19 @@ This kind of NaN is quiet, any operation returning a number will return
 NaN when given a quiet NaN (the NaN value will flow through all operations).
 The other kind of NaN is signalling which is the value that can be reached
 in <code>Error.result/1</code> when the result is NaN. Any operation given a signalling
-return will signal <code>:invalid_operation</code>.</p>
+NaN return will signal <code>:invalid_operation</code>.</p>
 
 <p>Exceptional conditions are grouped into signals, each signal has a flag and a
 trap enabler in the context. Whenever a signal is triggered it&#39;s flag is set
 in the context and will be set until explicitly cleared. If the signal is trap
 enabled <a href="Decimal.Error.html"><code>Decimal.Error</code></a> will be raised.</p>
 
-<p>The specifications influencing the API:
-* <a href="http://speleotrove.com/decimal/decarith.html">IBM&#39;s General Decimal Arithmetic Specification</a>
-* <a href="http://754r.ucbtest.org/standards/854.pdf">IEEE standard 854-1987</a></p>
+<p>The specifications influencing the API:</p>
+
+<ul>
+<li><a href="http://speleotrove.com/decimal/decarith.html">IBM&#39;s General Decimal Arithmetic Specification</a></li>
+<li><a href="http://754r.ucbtest.org/standards/854.pdf">IEEE standard 854-1987</a></li>
+</ul>
 
 <p>This implementation follows the above standards as closely as possible. But at
 some places the implementation diverges from the specification. The reasons
@@ -88,10 +91,6 @@ or <em>negative</em>.</p>
   
     <td class="summary_synopsis"><p>Adds two numbers together.</p>
 </td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#calc_frac/4">calc_frac(coef, exp, frac, fexp)</a></td>
   
 </tr>
 <tr>
@@ -331,8 +330,6 @@ second number&#39;s sign is negated.</p>
       
         <li>add(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
       
-        <li>add(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
-      
     </ul>
   
   <div class="docstring"><p>Adds two numbers together.</p>
@@ -344,14 +341,6 @@ second number&#39;s sign is negated.</p>
 be signalled.</li>
 </ul>
 </div>
-  
-</div>
-<div class="detail">
-  <p class="signature" id="calc_frac/4">
-    <strong>calc_frac(coef, exp, frac, fexp)</strong>
-  </p>
-  
-  <div class="docstring"></div>
   
 </div>
 <div class="detail">
@@ -382,8 +371,6 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
       
         <li>div(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
       
-        <li>div(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
-      
     </ul>
   
   <div class="docstring"><p>Divides two numbers.</p>
@@ -403,6 +390,13 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
     <strong>div_int(num1, num2)</strong>
   </p>
   
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>div_int(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
+  
   <div class="docstring"><p>Divides two numbers and returns the integer part.</p>
 
 <h2>Exceptional conditions</h2>
@@ -419,6 +413,13 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
   <p class="signature" id="div_rem/2">
     <strong>div_rem(d1, d2)</strong>
   </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>div_rem(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: {<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>}</li>
+      
+    </ul>
   
   <div class="docstring"><p>Integer division of two numbers and the remainder. Should be used when both
 <a href="#div_int/2"><code>div_int/2</code></a> and <a href="#rem/2"><code>rem/2</code></a> is needed. Equivalent to: <code>{ Decimal.div_int(x, y),
@@ -568,7 +569,7 @@ numeric-string ::=  [sign] numeric-value | [sign] nan
     <p>Specs:</p>
     <ul class="spec">
       
-        <li>new(1 | {:op, 662, :-, {:integer, 662, 1}}, non_neg_integer | :qNaN | :sNaN | :inf, integer) :: <a href="#t:t/0">t</a></li>
+        <li>new(1 | {:op, 665, :-, {:integer, 665, 1}}, non_neg_integer | :qNaN | :sNaN | :inf, integer) :: <a href="#t:t/0">t</a></li>
       
     </ul>
   
@@ -617,6 +618,13 @@ keeping the number numerically equivalent by increasing the exponent.</p>
   <p class="signature" id="rem/2">
     <strong>rem(num1, num2)</strong>
   </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>rem(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
   
   <div class="docstring"><p>Remainder of integer division of two numbers. The result will have the sign of
 the first number.</p>
@@ -669,6 +677,13 @@ many digits to the left of the decimal point will be zero.</p>
   <p class="signature" id="sub/2">
     <strong>sub(num1, d2)</strong>
   </p>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>sub(<a href="#t:t/0">t</a>, <a href="#t:t/0">t</a>) :: <a href="#t:t/0">t</a></li>
+      
+    </ul>
   
   <div class="docstring"><p>Subtracts second number from the first. Equivalent to <a href="Decimal.html#add/2"><code>Decimal.add/2</code></a> when the
 second number&#39;s sign is negated.</p>
