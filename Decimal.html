@@ -49,7 +49,7 @@ trap enabler in the context. Whenever a signal is triggered it&#39;s flag is set
 in the context and will be set until explicitly cleared. If the signal is trap
 enabled <a href="Decimal.Error.html"><code>Decimal.Error</code></a> will be raised.</p>
 
-<p>The specifications influencing the API:</p>
+<h2>Specifications</h2>
 
 <ul>
 <li><a href="http://speleotrove.com/decimal/decarith.html">IBM&#39;s General Decimal Arithmetic Specification</a></li>
@@ -69,10 +69,17 @@ and 0 for a positive number. Internally this implementation models the sign as
 10^exponent</code> and will refer to the sign in documentation as either <em>positive</em>
 or <em>negative</em>.</p>
 
+<p>There is currently no maximum or minimum values for the exponent. Because of
+that all numbers are &quot;normal&quot;. This means that when an operation should return
+a number that &quot;underflow&quot; 0 is returned instead of Etiny. This may happen when
+dividing a number with infinity. Additionally, overflow, underflow and clamped
+may never be signalled.</p>
+
         </div>
       
 
-      <a href="" target="_blank" class="view_source">Source</a>
+      <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L1" target="_blank" class="view_source">Source</a>
 
       
 
@@ -319,6 +326,9 @@ second number&#39;s sign is negated.</p>
   <div class="docstring"><p>The absolute value of given number. Sets the number&#39;s sign to positive.</p>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L211" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="add/2">
@@ -342,6 +352,9 @@ be signalled.</li>
 </ul>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L231" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="compare/2">
@@ -359,6 +372,9 @@ be signalled.</li>
 <code>#Decimal&lt;1&gt;</code> is returned, if less than <code>Decimal&lt;-1&gt;</code> is returned. Otherwise,
 if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L277" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -384,6 +400,9 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </ul>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L300" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="div_int/2">
@@ -407,6 +426,9 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 <li>If second number (denominator) is (+-)0 <code>:division_by_zero</code> is signalled.</li>
 </ul>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L359" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -434,6 +456,9 @@ Decimal.rem(x, y) }</code>.</p>
 </ul>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L388" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="get_context/0">
@@ -449,6 +474,9 @@ Decimal.rem(x, y) }</code>.</p>
   
   <div class="docstring"><p>Gets the process&#39; context.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L787" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -468,6 +496,9 @@ functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN 
 Only if both numbers are NaN will NaN be returned.</p>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L464" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="min/2">
@@ -486,6 +517,9 @@ functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN 
 Only if both numbers are NaN will NaN be returned.</p>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L495" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="minus/1">
@@ -501,6 +535,9 @@ Only if both numbers are NaN will NaN be returned.</p>
   
   <div class="docstring"><p>Negates the given number.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L524" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -524,6 +561,9 @@ Only if both numbers are NaN will NaN be returned.</p>
 signalled.</li>
 </ul>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L556" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -560,6 +600,9 @@ numeric-string ::=  [sign] numeric-value | [sign] nan
 </code></pre>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L655" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="new/3">
@@ -569,7 +612,7 @@ numeric-string ::=  [sign] numeric-value | [sign] nan
     <p>Specs:</p>
     <ul class="spec">
       
-        <li>new(1 | {:op, 665, :-, {:integer, 665, 1}}, non_neg_integer | :qNaN | :sNaN | :inf, integer) :: <a href="#t:t/0">t</a></li>
+        <li>new(1 | -1, non_neg_integer | :qNaN | :sNaN | :inf, integer) :: <a href="#t:t/0">t</a></li>
       
     </ul>
   
@@ -579,6 +622,9 @@ the number will be: <code>sign * coefficient * 10^exponent</code>.</p>
 <p>A decimal number will always be created exactly as specified with all digits
 kept - it will not be rounded with the context.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L672" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -596,6 +642,9 @@ kept - it will not be rounded with the context.</p>
   <div class="docstring"><p>Applies the context to the given number rounding it to specified precision.</p>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L540" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="reduce/1">
@@ -612,6 +661,9 @@ kept - it will not be rounded with the context.</p>
   <div class="docstring"><p>Reduces the given number. Removes trailing zeros from coefficient while
 keeping the number numerically equivalent by increasing the exponent.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L586" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -638,6 +690,9 @@ the first number.</p>
 </ul>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L373" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="round/3">
@@ -656,6 +711,9 @@ the first number.</p>
 many digits to the left of the decimal point will be zero.</p>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L613" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="set_context/1">
@@ -671,6 +729,9 @@ many digits to the left of the decimal point will be zero.</p>
   
   <div class="docstring"><p>Set the process&#39; context.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L795" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -696,6 +757,9 @@ be signalled.</li>
 </ul>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L267" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="to_string/2">
@@ -710,7 +774,18 @@ be signalled.</li>
     </ul>
   
   <div class="docstring"><p>Converts given number to its string representation.</p>
+
+<h2>Options</h2>
+
+<ul>
+<li><code>:scientific</code> - Number converted to scientific notation.</li>
+<li><code>:normal</code> - Number converted without a exponent.</li>
+<li><code>:raw</code> - Number converted to it&#39;s raw, internal format.</li>
+</ul>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L685" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -728,6 +803,9 @@ be signalled.</li>
   <div class="docstring"><p>Update the process&#39; context.</p>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L803" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="with_context/2">
@@ -743,6 +821,9 @@ be signalled.</li>
   
   <div class="docstring"><p>Runs function with given context.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L774" target="_blank" class="view_source">Source</a>
   
 </div>
 
@@ -762,6 +843,9 @@ be signalled.</li>
 <p>Allowed in guard tests.</p>
 </div>
   
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L201" target="_blank" class="view_source">Source</a>
+  
 </div>
 <div class="detail">
   <p class="signature" id="is_nan/1">
@@ -772,6 +856,9 @@ be signalled.</li>
 
 <p>Allowed in guard tests.</p>
 </div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+/lib/decimal.ex#L177" target="_blank" class="view_source">Source</a>
   
 </div>
 

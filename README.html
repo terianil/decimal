@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>README</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <div id="content">
+      <h1>Decimal</h1>
+
+<p>Arbitrary precision decimal arithmetic for Elixir.</p>
+
+<p>Documentation: <a href="http://ericmj.github.io/decimal">http://ericmj.github.io/decimal</a></p>
+
+<h2>Usage</h2>
+
+<p>Add Decimal as a dependency in your <code>mix.exs</code> file.</p>
+
+<pre><code class="elixir">def deps do
+  [ { :decimal, github: &quot;ericmj/decimal&quot; } ]
+end
+</code></pre>
+
+<p>After you are done, run <code>mix deps.get</code> in your shell to fetch and compile Decimal. Start an interactive Elixir shell with <code>iex -S mix</code>.</p>
+
+<pre><code class="iex">iex&gt; alias Decimal, as: D
+nil
+iex&gt; D.add(D.new(21), D.new(21))
+#Decimal&lt;42&gt;
+iex&gt; D.div(D.new(1), D.new(3))
+#Decimal&lt;0.333333333&gt;
+
+</code></pre>
+
+<h2>Examples</h2>
+
+<h3>Using the context</h3>
+
+<h3>Flags and traps</h3>
+
+<h3>Mitigating rounding errors</h3>
+
+<h2>License</h2>
+
+<p>Copyright 2013 Eric Meadows-Jönsson</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at</p>
+
+<pre class="codeblock"><code>   http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.</p>
+
+    </div>
+  </body>
+</html>
+
