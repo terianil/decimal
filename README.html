@@ -50,7 +50,7 @@ iex&gt; D.div(D.new(1), D.new(3))
 
 <h3>Using the context</h3>
 
-<p>The context specifies the maximum precision of the result of all calculations,
+<p>The context specifies the maximum precision of the result of calculations and
 the rounding algorithm if the result has a higher precision than the specified
 maximum. It also holds the list of set of trap enablers and the currently set
 flags.</p>
@@ -59,6 +59,25 @@ flags.</p>
 to pass the context around explicitly and the flags will be updated
 automatically.</p>
 
+<p>The context is accessed with <code>Decimal.get_context/0</code> and set with
+<code>Decimal.set_context/1</code>. It can also be temporarily set with
+<code>Decimal.with_context/2</code>.</p>
+
+<pre><code class="iex">iex&gt; D.get_context
+Decimal.Context[precision: 9, rounding: :half_up, flags: [],
+ traps: [:invalid_operation, :division_by_zero]]
+iex&gt; D.with_context Context[precision: 2], fn -&gt; IO.inspect D.get_context end
+Decimal.Context[precision: 2, rounding: :half_up, flags: [],
+ traps: [:invalid_operation, :division_by_zero]]
+:ok
+iex&gt; D.set_context(D.get_context.traps([]))
+:ok
+iex&gt; Decimal.get_context
+Decimal.Context[precision: 9, rounding: :half_up, flags: [], traps: []]
+</code></pre>
+
+<h3>Precision and rounding</h3>
+
 <p>The precision is used to limit the amount of decimal digits in the coefficient:</p>
 
 <pre><code class="iex">iex&gt; D.set_context(D.get_context.precision(9))
@@ -66,6 +85,7 @@ automatically.</p>
 iex&gt; D.div(D.new(1), D.new(3))
 #Decimal&lt;0.333333333&gt;
 iex&gt; D.set_context(D.get_context.precision(2))
+:ok
 iex&gt; D.div(D.new(1), D.new(3))
 #Decimal&lt;0.33&gt;
 </code></pre>
@@ -78,6 +98,7 @@ when it get be represented with the current precision:</p>
 iex&gt; D.div(D.new(31), D.new(2))
 #Decimal&lt;16&gt;
 iex&gt; D.set_context(D.get_context.rounding(:floor))
+:ok
 iex&gt; D.div(D.new(31), D.new(2))
 #Decimal&lt;15&gt;
 </code></pre>
@@ -111,19 +132,17 @@ iex&gt; D.div(D.new(31), D.new(2))
 
 <p>The default trap enablers, such as <code>:division_by_zero</code> can be unset:</p>
 
-<p>iex&gt; D.get<em>context.traps
-[:invalid</em>operation, :division<em>by</em>zero]
+<pre><code class="iex">iex&gt; D.get_context.traps
+[:invalid_operation, :division_by_zero]
 iex&gt; D.div(D.new(42), D.new(0))
 ** (Decimal.Error)
-iex&gt; D.set<em>context(D.get</em>context.traps([]).flags([]))
+iex&gt; D.set_context(D.get_context.traps([]).flags([]))
 :ok
-iex&gt; D.div(D.new(42), D.new(0))</p>
-
-<h1>Decimal<Infinity></h1>
-
-<p>iex&gt; D.get<em>context.flags
-[:division</em>by_zero]
-```</p>
+iex&gt; D.div(D.new(42), D.new(0))
+#Decimal&lt;Infinity&gt;
+iex&gt; D.get_context.flags
+[:division_by_zero]
+</code></pre>
 
 <h3>Mitigating rounding errors</h3>
 
