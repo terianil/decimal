@@ -32,6 +32,10 @@
           <p>The context is kept in the process dictionary. It can be accessed with
 <a href="Decimal.html#get_context/0"><code>Decimal.get_context/0</code></a> and <a href="Decimal.html#set_context/1"><code>Decimal.set_context/1</code></a>.</p>
 
+<p>The default context has a precision of 9, the rounding algorithm is
+<code>:half_up</code>. The set trap enablers are <code>:invalid_operation</code> and
+<code>:division_by_zero</code>.</p>
+
 <h2>Fields</h2>
 
 <ul>
@@ -81,7 +85,7 @@ up).</li>
         </div>
       
 
-      <a href="https://github.com/ericmj/decimal/blob/cf96980b151960da980a9b989b56f79437ed66de
+      <a href="https://github.com/ericmj/decimal/blob/ffa0e6568c22bdd70b2c56f02de4c943c3a4a4b4
 /lib/decimal.ex#L104" target="_blank" class="view_source">Source</a>
 
       
