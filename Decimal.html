@@ -20,10 +20,31 @@
     </script>
 
     <div id="content">
+      <div class="breadcrumbs">Decimal v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Decimal.html">Decimal</a></div>
+
       <h1>
         Decimal
         
       </h1>
+
+      
+
+      <ul class="summary_links">
+        
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+          <li><a href="#macros_details">Macros</a></li>
+        
+        
+        
+          <li><a href="#types_details">Types</a></li>
+        
+      </ul>
 
       
         <div id="moduledoc" class="docstring">
@@ -78,25 +99,27 @@ Additionally, overflow, underflow and clamped may never be signalled.</p>
         </div>
       
 
-      <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
+      
+        <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
 /lib/decimal.ex#L1" target="_blank" class="view_source">Source</a>
-
       
 
       
-        <h2 id="functions_summary">Functions summary</h2>
+
+      
+        <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
   <td class="summary_signature"><a href="#abs/1">abs(num)</a></td>
   
-    <td class="summary_synopsis"><p>The absolute value of given number. Sets the number&#39;s sign to positive.</p>
+    <td class="summary_synopsis"><p>The absolute value of given number. Sets the number&#39;s sign to positive</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#add/2">add(num1, num2)</a></td>
   
-    <td class="summary_synopsis"><p>Adds two numbers together.</p>
+    <td class="summary_synopsis"><p>Adds two numbers together</p>
 </td>
   
 </tr>
@@ -105,21 +128,21 @@ Additionally, overflow, underflow and clamped may never be signalled.</p>
   
     <td class="summary_synopsis"><p>Compares two numbers numerically. If both first number is greater than second
 <code>#Decimal&lt;1&gt;</code> is returned, if less than <code>Decimal&lt;-1&gt;</code> is returned. Otherwise,
-if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
+if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#div/2">div(num1, num2)</a></td>
   
-    <td class="summary_synopsis"><p>Divides two numbers.</p>
+    <td class="summary_synopsis"><p>Divides two numbers</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#div_int/2">div_int(num1, num2)</a></td>
   
-    <td class="summary_synopsis"><p>Divides two numbers and returns the integer part.</p>
+    <td class="summary_synopsis"><p>Divides two numbers and returns the integer part</p>
 </td>
   
 </tr>
@@ -128,14 +151,35 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
   
     <td class="summary_synopsis"><p>Integer division of two numbers and the remainder. Should be used when both
 <a href="#div_int/2"><code>div_int/2</code></a> and <a href="#rem/2"><code>rem/2</code></a> is needed. Equivalent to: <code>{ Decimal.div_int(x, y),
-Decimal.rem(x, y) }</code>.</p>
+Decimal.rem(x, y) }</code></p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#get_context/0">get_context()</a></td>
   
-    <td class="summary_synopsis"><p>Gets the process&#39; context.</p>
+    <td class="summary_synopsis"><p>Gets the process&#39; context</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#is_decimal/1">is_decimal(arg)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns <code>true</code> if argument is a decimal number; otherwise <code>false</code></p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#is_inf/1">is_inf(num)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code></p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#is_nan/1">is_nan(num)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code></p>
 </td>
   
 </tr>
@@ -144,7 +188,7 @@ Decimal.rem(x, y) }</code>.</p>
   
     <td class="summary_synopsis"><p>Compares two values numerically and returns the maximum. Unlike most other
 functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN the result will be the other number.
-Only if both numbers are NaN will NaN be returned.</p>
+Only if both numbers are NaN will NaN be returned</p>
 </td>
   
 </tr>
@@ -153,21 +197,21 @@ Only if both numbers are NaN will NaN be returned.</p>
   
     <td class="summary_synopsis"><p>Compares two values numerically and returns the minimum. Unlike most other
 functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN the result will be the other number.
-Only if both numbers are NaN will NaN be returned.</p>
+Only if both numbers are NaN will NaN be returned</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#minus/1">minus(num)</a></td>
   
-    <td class="summary_synopsis"><p>Negates the given number.</p>
+    <td class="summary_synopsis"><p>Negates the given number</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#mult/2">mult(num1, num2)</a></td>
   
-    <td class="summary_synopsis"><p>Multiplies two numbers.</p>
+    <td class="summary_synopsis"><p>Multiplies two numbers</p>
 </td>
   
 </tr>
@@ -177,7 +221,7 @@ Only if both numbers are NaN will NaN be returned.</p>
     <td class="summary_synopsis"><p>Creates a new decimal number from a string representation, an integer or a
 floating point number. Floating point numbers will be converted to decimal
 numbers with <a href="http://www.erlang.org/doc/man/io_lib_format.html#fwrite_g-1"><code>:io_lib_format.fwrite_g/1</code></a>, since this conversion is not exact
-it is recommended to give an integer or a string when possible.</p>
+it is recommended to give an integer or a string when possible</p>
 </td>
   
 </tr>
@@ -185,14 +229,14 @@ it is recommended to give an integer or a string when possible.</p>
   <td class="summary_signature"><a href="#new/3">new(sign, coefficient, exponent)</a></td>
   
     <td class="summary_synopsis"><p>Creates a new decimal number from the sign, coefficient and exponent such that
-the number will be: <code>sign * coefficient * 10^exponent</code>.</p>
+the number will be: <code>sign * coefficient * 10^exponent</code></p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#plus/1">plus(num)</a></td>
   
-    <td class="summary_synopsis"><p>Applies the context to the given number rounding it to specified precision.</p>
+    <td class="summary_synopsis"><p>Applies the context to the given number rounding it to specified precision</p>
 </td>
   
 </tr>
@@ -200,7 +244,7 @@ the number will be: <code>sign * coefficient * 10^exponent</code>.</p>
   <td class="summary_signature"><a href="#reduce/1">reduce(num)</a></td>
   
     <td class="summary_synopsis"><p>Reduces the given number. Removes trailing zeros from coefficient while
-keeping the number numerically equivalent by increasing the exponent.</p>
+keeping the number numerically equivalent by increasing the exponent</p>
 </td>
   
 </tr>
@@ -208,23 +252,23 @@ keeping the number numerically equivalent by increasing the exponent.</p>
   <td class="summary_signature"><a href="#rem/2">rem(num1, num2)</a></td>
   
     <td class="summary_synopsis"><p>Remainder of integer division of two numbers. The result will have the sign of
-the first number.</p>
+the first number</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#round/3">round(num, places // 0, mode // :half_up)</a></td>
+  <td class="summary_signature"><a href="#round/3">round(num, places \\ 0, mode \\ :half_up)</a></td>
   
     <td class="summary_synopsis"><p>Rounds the given number to specified decimal places with the given strategy
 (default is to round to nearest one). If places is negative, at least that
-many digits to the left of the decimal point will be zero.</p>
+many digits to the left of the decimal point will be zero</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#set_context/1">set_context(context)</a></td>
   
-    <td class="summary_synopsis"><p>Set the process&#39; context.</p>
+    <td class="summary_synopsis"><p>Set the process&#39; context</p>
 </td>
   
 </tr>
@@ -232,61 +276,38 @@ many digits to the left of the decimal point will be zero.</p>
   <td class="summary_signature"><a href="#sub/2">sub(num1, num2)</a></td>
   
     <td class="summary_synopsis"><p>Subtracts second number from the first. Equivalent to <a href="Decimal.html#add/2"><code>Decimal.add/2</code></a> when the
-second number&#39;s sign is negated.</p>
+second number&#39;s sign is negated</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#to_string/2">to_string(num, type // :scientific)</a></td>
+  <td class="summary_signature"><a href="#to_string/2">to_string(num, type \\ :scientific)</a></td>
   
-    <td class="summary_synopsis"><p>Converts given number to its string representation.</p>
+    <td class="summary_synopsis"><p>Converts given number to its string representation</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#update_context/1">update_context(fun)</a></td>
   
-    <td class="summary_synopsis"><p>Update the process&#39; context.</p>
+    <td class="summary_synopsis"><p>Update the process&#39; context</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#with_context/2">with_context(context, fun)</a></td>
   
-    <td class="summary_synopsis"><p>Runs function with given context.</p>
+    <td class="summary_synopsis"><p>Runs function with given context</p>
 </td>
   
 </tr>
 
         </table>
-      
-
-      
-        <h2 id="macros_summary">Macros summary</h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#is_inf/1">is_inf(num)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code>.</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#is_nan/1">is_nan(num)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code>.</p>
-</td>
-  
-</tr>
-
-        </table>
-      
-
       
 
       
         <div id="types_details" class="details_list">
-          <h2>Types</h2>
+          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
           <div class="type_detail">
   <p class="typespec" id="t:t/0">
     <a href="#t:t/0">t</a>
@@ -313,9 +334,14 @@ second number&#39;s sign is negated.</p>
         <div id="functions_details" class="details_list">
           <h2>Functions</h2>
           <div class="detail">
-  <p class="signature" id="abs/1">
-    <strong>abs(num)</strong>
-  </p>
+  <div class="detail_header" id="abs/1">
+    <span class="signature"><strong>abs(num)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#abs/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -327,14 +353,19 @@ second number&#39;s sign is negated.</p>
   <div class="docstring"><p>The absolute value of given number. Sets the number&#39;s sign to positive.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L215" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L239" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="add/2">
-    <strong>add(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="add/2">
+    <span class="signature"><strong>add(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#add/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -353,14 +384,19 @@ be signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L235" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L259" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="compare/2">
-    <strong>compare(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="compare/2">
+    <span class="signature"><strong>compare(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#compare/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -374,14 +410,19 @@ be signalled.</li>
 if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L281" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L305" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="div/2">
-    <strong>div(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="div/2">
+    <span class="signature"><strong>div(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#div/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -401,14 +442,19 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L304" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L328" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="div_int/2">
-    <strong>div_int(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="div_int/2">
+    <span class="signature"><strong>div_int(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#div_int/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -428,14 +474,19 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L363" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L387" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="div_rem/2">
-    <strong>div_rem(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="div_rem/2">
+    <span class="signature"><strong>div_rem(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#div_rem/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -457,14 +508,19 @@ Decimal.rem(x, y) }</code>.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L392" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L416" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="get_context/0">
-    <strong>get_context()</strong>
-  </p>
+  <div class="detail_header" id="get_context/0">
+    <span class="signature"><strong>get_context()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#get_context/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -476,14 +532,19 @@ Decimal.rem(x, y) }</code>.</p>
   <div class="docstring"><p>Gets the process&#39; context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L792" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L816" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="max/2">
-    <strong>max(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="max/2">
+    <span class="signature"><strong>max(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#max/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -497,14 +558,19 @@ functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN 
 Only if both numbers are NaN will NaN be returned.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L468" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L492" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="min/2">
-    <strong>min(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="min/2">
+    <span class="signature"><strong>min(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#min/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -518,14 +584,19 @@ functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN 
 Only if both numbers are NaN will NaN be returned.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L499" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L523" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="minus/1">
-    <strong>minus(num)</strong>
-  </p>
+  <div class="detail_header" id="minus/1">
+    <span class="signature"><strong>minus(num)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#minus/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -537,14 +608,19 @@ Only if both numbers are NaN will NaN be returned.</p>
   <div class="docstring"><p>Negates the given number.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L528" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L552" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="mult/2">
-    <strong>mult(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="mult/2">
+    <span class="signature"><strong>mult(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#mult/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -563,14 +639,19 @@ signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L560" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L584" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="new/1">
-    <strong>new(num)</strong>
-  </p>
+  <div class="detail_header" id="new/1">
+    <span class="signature"><strong>new(num)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#new/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -602,14 +683,19 @@ numeric-string ::=  [sign] numeric-value | [sign] nan
 </code></pre>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L660" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L684" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="new/3">
-    <strong>new(sign, coefficient, exponent)</strong>
-  </p>
+  <div class="detail_header" id="new/3">
+    <span class="signature"><strong>new(sign, coefficient, exponent)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#new/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -625,14 +711,19 @@ the number will be: <code>sign * coefficient * 10^exponent</code>.</p>
 kept - it will not be rounded with the context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L677" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L701" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="plus/1">
-    <strong>plus(num)</strong>
-  </p>
+  <div class="detail_header" id="plus/1">
+    <span class="signature"><strong>plus(num)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#plus/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -644,14 +735,19 @@ kept - it will not be rounded with the context.</p>
   <div class="docstring"><p>Applies the context to the given number rounding it to specified precision.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L544" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L568" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="reduce/1">
-    <strong>reduce(num)</strong>
-  </p>
+  <div class="detail_header" id="reduce/1">
+    <span class="signature"><strong>reduce(num)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#reduce/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -664,14 +760,19 @@ kept - it will not be rounded with the context.</p>
 keeping the number numerically equivalent by increasing the exponent.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L590" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L614" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="rem/2">
-    <strong>rem(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="rem/2">
+    <span class="signature"><strong>rem(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#rem/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -692,14 +793,19 @@ the first number.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L377" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L401" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="round/3">
-    <strong>round(num, places // 0, mode // :half_up)</strong>
-  </p>
+  <div class="detail_header" id="round/3">
+    <span class="signature"><strong>round(num, places \\ 0, mode \\ :half_up)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#round/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -713,14 +819,19 @@ the first number.</p>
 many digits to the left of the decimal point will be zero.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L617" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L641" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="set_context/1">
-    <strong>set_context(context)</strong>
-  </p>
+  <div class="detail_header" id="set_context/1">
+    <span class="signature"><strong>set_context(context)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#set_context/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -732,14 +843,19 @@ many digits to the left of the decimal point will be zero.</p>
   <div class="docstring"><p>Set the process&#39; context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L800" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L824" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="sub/2">
-    <strong>sub(num1, num2)</strong>
-  </p>
+  <div class="detail_header" id="sub/2">
+    <span class="signature"><strong>sub(num1, num2)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#sub/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -759,14 +875,19 @@ be signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L271" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L295" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="to_string/2">
-    <strong>to_string(num, type // :scientific)</strong>
-  </p>
+  <div class="detail_header" id="to_string/2">
+    <span class="signature"><strong>to_string(num, type \\ :scientific)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#to_string/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -786,14 +907,19 @@ be signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L690" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L714" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="update_context/1">
-    <strong>update_context(fun)</strong>
-  </p>
+  <div class="detail_header" id="update_context/1">
+    <span class="signature"><strong>update_context(fun)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#update_context/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -805,14 +931,19 @@ be signalled.</li>
   <div class="docstring"><p>Update the process&#39; context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L809" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L833" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="with_context/2">
-    <strong>with_context(context, fun)</strong>
-  </p>
+  <div class="detail_header" id="with_context/2">
+    <span class="signature"><strong>with_context(context, fun)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#with_context/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
     <p>Specs:</p>
     <ul class="spec">
@@ -824,8 +955,8 @@ be signalled.</li>
   <div class="docstring"><p>Runs function with given context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
-/lib/decimal.ex#L779" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L803" target="_blank" class="view_source">Source</a>
   
 </div>
 
@@ -836,30 +967,59 @@ be signalled.</li>
         <div id="macros_details" class="details_list">
           <h2>Macros</h2>
           <div class="detail">
-  <p class="signature" id="is_inf/1">
-    <strong>is_inf(num)</strong>
-  </p>
+  <div class="detail_header" id="is_decimal/1">
+    <span class="signature"><strong>is_decimal(arg)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#is_decimal/1" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Returns <code>true</code> if argument is a decimal number; otherwise <code>false</code>.</p>
+
+<p>Allowed in guard tests.</p>
+</div>
+  
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
+/lib/decimal.ex#L217" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="is_inf/1">
+    <span class="signature"><strong>is_inf(num)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#is_inf/1" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code>.</p>
 
 <p>Allowed in guard tests.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
 /lib/decimal.ex#L205" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="is_nan/1">
-    <strong>is_nan(num)</strong>
-  </p>
+  <div class="detail_header" id="is_nan/1">
+    <span class="signature"><strong>is_nan(num)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#is_nan/1" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code>.</p>
 
 <p>Allowed in guard tests.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/8dc575a374bbdaac279e0199e9d568f180d04eff
+    <a href="https://github.com/ericmj/decimal/blob/342476ec74b90619f54e419c9449b8fa2e859ae7
 /lib/decimal.ex#L181" target="_blank" class="view_source">Source</a>
   
 </div>
