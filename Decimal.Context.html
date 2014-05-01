@@ -20,20 +20,16 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Decimal v0.1.2 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Decimal.html">Decimal</a> &rarr; <a href="Decimal.Context.html">Context</a></div>
+      <div class="breadcrumbs">Decimal v0.2.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Decimal.html">Decimal</a> &rarr; <a href="Decimal.Context.html">Context</a></div>
 
       <h1>
         Decimal.Context
-        
-          <small>record</small>
         
       </h1>
 
       
 
       <ul class="summary_links">
-        
-          <li><a href="#fields_summary">Fields</a></li>
         
         
         
@@ -103,39 +99,10 @@ up).</li>
       
 
       
-        <a href="https://github.com/ericmj/decimal/blob/f58c7dce8ef3b20968d0c5e5e8f6795b0d572d89
-/lib/decimal.ex#L104" target="_blank" class="view_source">Source</a>
+        <a href="https://github.com/ericmj/decimal/blob/0676c03d8460809db400c7c3dbaef65adc543721
+/lib/decimal.ex#L105" target="_blank" class="view_source">Source</a>
       
 
-      
-        <h2 id="fields_summary">Fields <small>(and defaults)</small></h2>
-        <ul class="summary">
-          
-            <li>
-              <span class="summary_signature">
-                <strong>precision:</strong> 9
-              </span>
-            </li>
-          
-            <li>
-              <span class="summary_signature">
-                <strong>rounding:</strong> :half_up
-              </span>
-            </li>
-          
-            <li>
-              <span class="summary_signature">
-                <strong>flags:</strong> []
-              </span>
-            </li>
-          
-            <li>
-              <span class="summary_signature">
-                <strong>traps:</strong> [:invalid_operation, :division_by_zero]
-              </span>
-            </li>
-          
-        </ul>
       
 
       
@@ -145,13 +112,7 @@ up).</li>
           <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
           <div class="type_detail">
   <p class="typespec" id="t:t/0">
-    <a href="#t:t/0">t</a> :: {Decimal.Context, pos_integer, <a href="Decimal.html#t:rounding/0">Decimal.rounding</a>, [<a href="Decimal.html#t:signal/0">Decimal.signal</a>], [<a href="Decimal.html#t:signal/0">Decimal.signal</a>]}
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:options/0">
-    <a href="#t:options/0">options</a> :: [precision: pos_integer, rounding: <a href="Decimal.html#t:rounding/0">Decimal.rounding</a>, flags: [<a href="Decimal.html#t:signal/0">Decimal.signal</a>], traps: [<a href="Decimal.html#t:signal/0">Decimal.signal</a>]] | [{<a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a>, term}]
+    <a href="#t:t/0">t</a> :: %Decimal.Context{precision: term, rounding: term, flags: term, traps: term}
   </p>
   
 </div>
