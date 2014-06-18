@@ -20,7 +20,7 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Decimal v0.2.1 &rarr; <a href="readme.html">README</a></div>
+      <div class="breadcrumbs">Decimal v0.2.2 &rarr; <a href="readme.html">README</a></div>
       <h1>Decimal</h1>
 
 <p><a href="https://travis-ci.org/ericmj/decimal"><img src="https://travis-ci.org/ericmj/decimal.svg?branch=master" alt="Build Status"></a></p>
@@ -33,21 +33,26 @@
 
 <p>Add Decimal as a dependency in your <code>mix.exs</code> file.</p>
 
-<pre><code class="elixir">def deps do
+<p><code>elixir
+def deps do
   [ { :decimal, github: &quot;ericmj/decimal&quot; } ]
 end
-</code></pre>
+</code></p>
 
 <p>After you are done, run <code>mix deps.get</code> in your shell to fetch and compile Decimal. Start an interactive Elixir shell with <code>iex -S mix</code>.</p>
 
-<pre><code class="iex">iex&gt; alias Decimal, as: D
+<p>```iex
+iex&gt; alias Decimal, as: D
 nil
-iex&gt; D.add(D.new(6), D.new(7))
-#Decimal&lt;13&gt;
-iex&gt; D.div(D.new(1), D.new(3))
-#Decimal&lt;0.333333333&gt;
+iex&gt; D.add(D.new(6), D.new(7))</p>
 
-</code></pre>
+<h1>Decimal<13></h1>
+
+<p>iex&gt; D.div(D.new(1), D.new(3))</p>
+
+<h1>Decimal<0.333333333></h1>
+
+<p>```</p>
 
 <h2>Examples</h2>
 
@@ -66,7 +71,8 @@ automatically.</p>
 <code>Decimal.set_context/1</code>. It can also be temporarily set with
 <code>Decimal.with_context/2</code>.</p>
 
-<pre><code class="iex">iex&gt; D.get_context
+<p><code>iex
+iex&gt; D.get_context
 Decimal.Context[precision: 9, rounding: :half_up, flags: [],
  traps: [:invalid_operation, :division_by_zero]]
 iex&gt; D.with_context Context[precision: 2], fn -&gt; IO.inspect D.get_context end
@@ -77,49 +83,62 @@ iex&gt; D.set_context(D.get_context.traps([]))
 :ok
 iex&gt; Decimal.get_context
 Decimal.Context[precision: 9, rounding: :half_up, flags: [], traps: []]
-</code></pre>
+</code></p>
 
 <h3>Precision and rounding</h3>
 
 <p>The precision is used to limit the amount of decimal digits in the coefficient:</p>
 
-<pre><code class="iex">iex&gt; D.set_context(D.get_context.precision(9))
+<p>```iex
+iex&gt; D.set<em>context(D.get</em>context.precision(9))
 :ok
-iex&gt; D.div(D.new(1), D.new(3))
-#Decimal&lt;0.333333333&gt;
-iex&gt; D.set_context(D.get_context.precision(2))
+iex&gt; D.div(D.new(1), D.new(3))</p>
+
+<h1>Decimal<0.333333333></h1>
+
+<p>iex&gt; D.set<em>context(D.get</em>context.precision(2))
 :ok
-iex&gt; D.div(D.new(1), D.new(3))
-#Decimal&lt;0.33&gt;
-</code></pre>
+iex&gt; D.div(D.new(1), D.new(3))</p>
+
+<h1>Decimal<0.33></h1>
+
+<p>```</p>
 
 <p>The rounding algorithm specifies how the result of an operation shall be rounded
 when it get be represented with the current precision:</p>
 
-<pre><code class="iex">iex&gt; D.set_context(D.get_context.rounding(:half_up))
+<p>```iex
+iex&gt; D.set<em>context(D.get</em>context.rounding(:half_up))
 :ok
-iex&gt; D.div(D.new(31), D.new(2))
-#Decimal&lt;16&gt;
-iex&gt; D.set_context(D.get_context.rounding(:floor))
+iex&gt; D.div(D.new(31), D.new(2))</p>
+
+<h1>Decimal<16></h1>
+
+<p>iex&gt; D.set<em>context(D.get</em>context.rounding(:floor))
 :ok
-iex&gt; D.div(D.new(31), D.new(2))
-#Decimal&lt;15&gt;
-</code></pre>
+iex&gt; D.div(D.new(31), D.new(2))</p>
+
+<h1>Decimal<15></h1>
+
+<p>```</p>
 
 <h3>Flags and trap enablers</h3>
 
 <p>When an exceptional condition is signalled its flag is set in the context and if
 if the trap enabler is set <code>Decimal.Error</code> will be raised.</p>
 
-<pre><code class="iex">iex&gt; D.get_context.traps
-[:invalid_operation, :division_by_zero]
+<p>```iex
+iex&gt; D.get<em>context.traps
+[:invalid</em>operation, :division<em>by</em>zero]
 iex&gt; D.get_context.flags
 []
-iex&gt; D.div(D.new(31), D.new(2))
-#Decimal&lt;15&gt;
-iex&gt; D.get_context.flags
+iex&gt; D.div(D.new(31), D.new(2))</p>
+
+<h1>Decimal<15></h1>
+
+<p>iex&gt; D.get_context.flags
 [:inexact, :rounded]
-</code></pre>
+```</p>
 
 <p><code>:inexact</code> and <code>:rounded</code> were signalled above because the result of the
 operation was inexact given the context&#39;s precision and had to be rounded to fit
@@ -127,25 +146,29 @@ the precision. <code>Decimal.Error</code> was not raised because the signals&#39
 weren&#39;t set. We can, however, set the trap enabler if we what this condition to
 raise.</p>
 
-<pre><code class="iex">iex&gt; D.set_context(D.get_context.update_traps((&amp;1 ++ [:inexact]))
+<p><code>iex
+iex&gt; D.set_context(D.get_context.update_traps((&amp;1 ++ [:inexact]))
 :ok
 iex&gt; D.div(D.new(31), D.new(2))
 ** (Decimal.Error)
-</code></pre>
+</code></p>
 
 <p>The default trap enablers, such as <code>:division_by_zero</code> can be unset:</p>
 
-<pre><code class="iex">iex&gt; D.get_context.traps
-[:invalid_operation, :division_by_zero]
+<p>```iex
+iex&gt; D.get<em>context.traps
+[:invalid</em>operation, :division<em>by</em>zero]
 iex&gt; D.div(D.new(42), D.new(0))
 ** (Decimal.Error)
-iex&gt; D.set_context(D.get_context.traps([]).flags([]))
+iex&gt; D.set<em>context(D.get</em>context.traps([]).flags([]))
 :ok
-iex&gt; D.div(D.new(42), D.new(0))
-#Decimal&lt;Infinity&gt;
-iex&gt; D.get_context.flags
-[:division_by_zero]
-</code></pre>
+iex&gt; D.div(D.new(42), D.new(0))</p>
+
+<h1>Decimal<Infinity></h1>
+
+<p>iex&gt; D.get<em>context.flags
+[:division</em>by_zero]
+```</p>
 
 <h3>Mitigating rounding errors</h3>
 

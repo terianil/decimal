@@ -20,17 +20,14 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Decimal v0.2.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Decimal.html">Decimal</a></div>
+      <div class="breadcrumbs">Decimal v0.2.2 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Decimal.html">Decimal</a></div>
 
       <h1>
         Decimal
         
       </h1>
 
-      
-
       <ul class="summary_links">
-        
         
           <li><a href="#summary">Summary</a></li>
         
@@ -98,93 +95,17 @@ Additionally, overflow, underflow and clamped may never be signalled.</p>
       
 
       
-        <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L1" target="_blank" class="view_source">Source</a>
-      
-
+        <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L1" class="view_source">Source</a>
       
 
       
         <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#get_context/0">get_context()</a></td>
-  
-    <td class="summary_synopsis"><p>Gets the process&#39; context</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#plus/1">plus(num)</a></td>
-  
-    <td class="summary_synopsis"><p>Applies the context to the given number rounding it to specified precision</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#new/1">new(num)</a></td>
-  
-    <td class="summary_synopsis"><p>Creates a new decimal number from a string representation, an integer or a
-floating point number. Floating point numbers will be converted to decimal
-numbers with <a href="http://www.erlang.org/doc/man/io_lib_format.html#fwrite_g-1"><code>:io_lib_format.fwrite_g/1</code></a>, since this conversion is not exact
-it is recommended to give an integer or a string when possible</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#minus/1">minus(num)</a></td>
-  
-    <td class="summary_synopsis"><p>Negates the given number</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#reduce/1">reduce(num)</a></td>
-  
-    <td class="summary_synopsis"><p>Reduces the given number. Removes trailing zeros from coefficient while
-keeping the number numerically equivalent by increasing the exponent</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#decimal?/1">decimal?(decimal)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns <code>true</code> if argument is a decimal number; otherwise <code>false</code></p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#inf?/1">inf?(decimal)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code></p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#nan?/1">nan?(decimal)</a></td>
-  
-    <td class="summary_synopsis"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code></p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#set_context/1">set_context(context)</a></td>
-  
-    <td class="summary_synopsis"><p>Set the process&#39; context</p>
-</td>
-  
-</tr>
-<tr>
   <td class="summary_signature"><a href="#abs/1">abs(num)</a></td>
   
     <td class="summary_synopsis"><p>The absolute value of given number. Sets the number&#39;s sign to positive</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#update_context/1">update_context(fun)</a></td>
-  
-    <td class="summary_synopsis"><p>Update the process&#39; context</p>
 </td>
   
 </tr>
@@ -201,6 +122,50 @@ keeping the number numerically equivalent by increasing the exponent</p>
     <td class="summary_synopsis"><p>Compares two numbers numerically. If both first number is greater than second
 <code>#Decimal&lt;1&gt;</code> is returned, if less than <code>Decimal&lt;-1&gt;</code> is returned. Otherwise,
 if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#decimal?/1">decimal?(decimal)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns <code>true</code> if argument is a decimal number; otherwise <code>false</code></p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#div/2">div(num1, decimal)</a></td>
+  
+    <td class="summary_synopsis"><p>Divides two numbers</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#div_int/2">div_int(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Divides two numbers and returns the integer part</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#div_rem/2">div_rem(num1, decimal)</a></td>
+  
+    <td class="summary_synopsis"><p>Integer division of two numbers and the remainder. Should be used when both
+<a href="#div_int/2"><code>div_int/2</code></a> and <a href="#rem/2"><code>rem/2</code></a> is needed. Equivalent to: <code>{Decimal.div_int(x, y),
+Decimal.rem(x, y)}</code></p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_context/0">get_context()</a></td>
+  
+    <td class="summary_synopsis"><p>Gets the process&#39; context</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#inf?/1">inf?(decimal)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code></p>
 </td>
   
 </tr>
@@ -223,32 +188,9 @@ Only if both numbers are NaN will NaN be returned</p>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#to_string/2">to_string(num, type \\ :scientific)</a></td>
+  <td class="summary_signature"><a href="#minus/1">minus(num)</a></td>
   
-    <td class="summary_synopsis"><p>Converts given number to its string representation</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#div_int/2">div_int(num1, num2)</a></td>
-  
-    <td class="summary_synopsis"><p>Divides two numbers and returns the integer part</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#div/2">div(num1, decimal)</a></td>
-  
-    <td class="summary_synopsis"><p>Divides two numbers</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#div_rem/2">div_rem(num1, decimal)</a></td>
-  
-    <td class="summary_synopsis"><p>Integer division of two numbers and the remainder. Should be used when both
-<a href="#div_int/2"><code>div_int/2</code></a> and <a href="#rem/2"><code>rem/2</code></a> is needed. Equivalent to: <code>{Decimal.div_int(x, y),
-Decimal.rem(x, y)}</code></p>
+    <td class="summary_synopsis"><p>Negates the given number</p>
 </td>
   
 </tr>
@@ -260,25 +202,19 @@ Decimal.rem(x, y)}</code></p>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#rem/2">rem(num1, num2)</a></td>
+  <td class="summary_signature"><a href="#nan?/1">nan?(decimal)</a></td>
   
-    <td class="summary_synopsis"><p>Remainder of integer division of two numbers. The result will have the sign of
-the first number</p>
+    <td class="summary_synopsis"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code></p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#with_context/2">with_context(context, fun)</a></td>
+  <td class="summary_signature"><a href="#new/1">new(num)</a></td>
   
-    <td class="summary_synopsis"><p>Runs function with given context</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#sub/2">sub(num1, num2)</a></td>
-  
-    <td class="summary_synopsis"><p>Subtracts second number from the first. Equivalent to <a href="Decimal.html#add/2"><code>Decimal.add/2</code></a> when the
-second number&#39;s sign is negated</p>
+    <td class="summary_synopsis"><p>Creates a new decimal number from a string representation, an integer or a
+floating point number. Floating point numbers will be converted to decimal
+numbers with <a href="http://www.erlang.org/doc/man/io_lib_format.html#fwrite_g-1"><code>:io_lib_format.fwrite_g/1</code></a>, since this conversion is not exact
+it is recommended to give an integer or a string when possible</p>
 </td>
   
 </tr>
@@ -291,11 +227,70 @@ the number will be: <code>sign * coefficient * 10^exponent</code></p>
   
 </tr>
 <tr>
+  <td class="summary_signature"><a href="#plus/1">plus(num)</a></td>
+  
+    <td class="summary_synopsis"><p>Applies the context to the given number rounding it to specified precision</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#reduce/1">reduce(num)</a></td>
+  
+    <td class="summary_synopsis"><p>Reduces the given number. Removes trailing zeros from coefficient while
+keeping the number numerically equivalent by increasing the exponent</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#rem/2">rem(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Remainder of integer division of two numbers. The result will have the sign of
+the first number</p>
+</td>
+  
+</tr>
+<tr>
   <td class="summary_signature"><a href="#round/3">round(num, places \\ 0, mode \\ :half_up)</a></td>
   
     <td class="summary_synopsis"><p>Rounds the given number to specified decimal places with the given strategy
 (default is to round to nearest one). If places is negative, at least that
 many digits to the left of the decimal point will be zero</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#set_context/1">set_context(context)</a></td>
+  
+    <td class="summary_synopsis"><p>Set the process&#39; context</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#sub/2">sub(num1, num2)</a></td>
+  
+    <td class="summary_synopsis"><p>Subtracts second number from the first. Equivalent to <a href="Decimal.html#add/2"><code>Decimal.add/2</code></a> when the
+second number&#39;s sign is negated</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#to_string/2">to_string(num, type \\ :scientific)</a></td>
+  
+    <td class="summary_synopsis"><p>Converts given number to its string representation</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#update_context/1">update_context(fun)</a></td>
+  
+    <td class="summary_synopsis"><p>Update the process&#39; context</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#with_context/2">with_context(context, fun)</a></td>
+  
+    <td class="summary_synopsis"><p>Runs function with given context</p>
 </td>
   
 </tr>
@@ -351,8 +346,8 @@ many digits to the left of the decimal point will be zero</p>
   <div class="docstring"><p>The absolute value of given number. Sets the number&#39;s sign to positive.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L196" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L196" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -382,8 +377,8 @@ be signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L216" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L216" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -408,8 +403,8 @@ be signalled.</li>
 if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L271" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L271" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -432,8 +427,8 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
   <div class="docstring"><p>Returns <code>true</code> if argument is a decimal number; otherwise <code>false</code>.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L189" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L189" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -464,8 +459,8 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L294" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L294" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -496,8 +491,8 @@ if both numbers are equal <code>Decimal&lt;0&gt;</code> is returned.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L362" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L362" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -530,8 +525,8 @@ Decimal.rem(x, y)}</code>.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L391" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L391" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -554,8 +549,8 @@ Decimal.rem(x, y)}</code>.</p>
   <div class="docstring"><p>Gets the process&#39; context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L814" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L814" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -578,8 +573,8 @@ Decimal.rem(x, y)}</code>.</p>
   <div class="docstring"><p>Returns <code>true</code> if number is (+-)Infinity; otherwise <code>false</code>.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L182" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L182" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -604,8 +599,8 @@ functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN 
 Only if both numbers are NaN will NaN be returned.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L472" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L472" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -630,8 +625,8 @@ functions in <a href="Decimal.html"><code>Decimal</code></a> if a number is NaN 
 Only if both numbers are NaN will NaN be returned.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L504" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L504" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -654,8 +649,8 @@ Only if both numbers are NaN will NaN be returned.</p>
   <div class="docstring"><p>Negates the given number.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L534" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L534" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -685,8 +680,8 @@ signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L566" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L566" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -709,8 +704,8 @@ signalled.</li>
   <div class="docstring"><p>Returns <code>true</code> if number is NaN; otherwise <code>false</code>.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L174" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L174" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -726,7 +721,7 @@ signalled.</li>
     <p>Specs:</p>
     <ul class="spec">
       
-        <li>new(<a href="#t:t/0">t</a> | integer | float | <a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a>) :: <a href="#t:t/0">t</a></li>
+        <li>new(<a href="#t:t/0">t</a> | integer | float | <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>) :: <a href="#t:t/0">t</a></li>
       
     </ul>
   
@@ -753,8 +748,8 @@ numeric-string ::=  [sign] numeric-value | [sign] nan
 </code></pre>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L682" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L682" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -781,8 +776,8 @@ the number will be: <code>sign * coefficient * 10^exponent</code>.</p>
 kept - it will not be rounded with the context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L699" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L699" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -805,8 +800,8 @@ kept - it will not be rounded with the context.</p>
   <div class="docstring"><p>Applies the context to the given number rounding it to specified precision.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L550" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L550" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -830,8 +825,8 @@ kept - it will not be rounded with the context.</p>
 keeping the number numerically equivalent by increasing the exponent.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L612" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L612" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -863,8 +858,8 @@ the first number.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L376" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L376" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -889,8 +884,8 @@ the first number.</p>
 many digits to the left of the decimal point will be zero.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L639" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L639" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -913,8 +908,8 @@ many digits to the left of the decimal point will be zero.</p>
   <div class="docstring"><p>Set the process&#39; context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L822" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L822" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -945,8 +940,8 @@ be signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L261" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L261" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -962,7 +957,7 @@ be signalled.</li>
     <p>Specs:</p>
     <ul class="spec">
       
-        <li>to_string(<a href="#t:t/0">t</a>, :scientific | :normal | :raw) :: <a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a></li>
+        <li>to_string(<a href="#t:t/0">t</a>, :scientific | :normal | :raw) :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a></li>
       
     </ul>
   
@@ -977,8 +972,8 @@ be signalled.</li>
 </ul>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L712" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L712" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -1001,8 +996,8 @@ be signalled.</li>
   <div class="docstring"><p>Update the process&#39; context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L831" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L831" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -1025,8 +1020,8 @@ be signalled.</li>
   <div class="docstring"><p>Runs function with given context.</p>
 </div>
   
-    <a href="https://github.com/ericmj/decimal/blob/96f1db6831ff68922aba7e4a30dded63486d297e
-/lib/decimal.ex#L801" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/ericmj/decimal/blob/d2d03c48c126d9cc0eca175dc2c33a36e39e2e1d
+/lib/decimal.ex#L801" class="view_source">Source</a>
   
 </div>
 
