@@ -901,7 +901,7 @@ defmodule Decimal do
   * `:raw` - Number converted to it's raw, internal format.
   """
   @spec to_string(t, :scientific | :normal | :raw) :: String.t
-  def to_string(num, type \\ :scientific)
+  def to_string(num, type \\ :normal)
 
   def to_string(%Decimal{sign: sign, coef: :qNaN}, _type) do
     if sign == 1, do: "NaN", else: "-NaN"
